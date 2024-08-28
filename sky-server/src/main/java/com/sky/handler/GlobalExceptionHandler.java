@@ -28,6 +28,11 @@ public class GlobalExceptionHandler {
         return Result.error(ex.getMessage());
     }
 
+    /**
+     * 处理SQL异常
+     * @param ex
+     * @return
+     */
     @ExceptionHandler
     public Result exceptionHandler(SQLIntegrityConstraintViolationException ex) {
         //Duplicate entry '111222333444555666' for key 'employee.idx_username'  //SQLIntegrityConstraintViolationException的异常消息
