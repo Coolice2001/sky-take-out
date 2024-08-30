@@ -85,6 +85,7 @@ public class EmployeeController {
     @PostMapping    //REST风格
     @ApiOperation("新增员工")
     public Result save(@RequestBody EmployeeDTO employeeDTO) {
+        System.out.println("当前线程的id" + Thread.currentThread().getId());
         log.info("新增员工：{}", employeeDTO);    //{}占位符，显示employeeDTO的数据
         employeeService.save(employeeDTO);
         return null;
