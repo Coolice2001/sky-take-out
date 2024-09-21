@@ -8,8 +8,8 @@ sky:
     password: 123qwe
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: LTAI5tSm2pUZtb2uJtNx26sg
-    access-key-secret: eKuwB7F6sOOHfsSjvVoHZUo2ui57F8
+    access-key-id: Alibaba Cloud AccessKey ID （敏感信息）
+    access-key-secret: AccessKey Secret（敏感信息）
     bucket-name: coolice2001
   redis:
     host: 192.168.138.130
