@@ -9,11 +9,15 @@ sky:
   alioss:
     endpoint: oss-cn-beijing.aliyuncs.com
 
-#    access-key-id: Alibaba Cloud AccessKey ID （敏感信息）
-#    access-key-secret: AccessKey Secret（敏感信息）
+    access-key-id: Alibaba Cloud AccessKey ID （敏感信息）
+    access-key-secret: AccessKey Secret（敏感信息）
     bucket-name: coolice2001
   redis:
     host: 192.168.138.130
     port: 6379
     password: 123qwe
     database: 10
+  wechat:
+
+    appid: AppID(小程序ID)（敏感信息）
+    secret: AppSecret(小程序密钥)（敏感信息）
