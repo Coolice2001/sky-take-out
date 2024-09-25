@@ -10,11 +10,14 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {
 
     /**
      * 根据分类id查询菜品数量
+     *
      * @param categoryId
      * @return
      */
@@ -23,6 +26,7 @@ public interface DishMapper {
 
     /**
      * 插入菜品数据
+     *
      * @param dish
      */
     @AutoFill(value = OperationType.INSERT)
@@ -35,4 +39,21 @@ public interface DishMapper {
      * @return
      */
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 动态条件查询菜品
+     *
+     * @param dish
+     * @return
+     */
+    List<Dish> list(Dish dish);
+
+    /**
+     * 根据套餐id查询菜品
+     *
+     * @param setmealId
+     * @return
+     */
+    @Select("select a.* from dish a left join setmeal_dish b on a.id = b.dish_id where b.setmeal_id = #{setmealId}")
+    List<Dish> getBySetmealId(Long setmealId);
 }
