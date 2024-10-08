@@ -34,6 +34,12 @@ public interface DishService {
     PageResult pageQuery(DishPageQueryDTO dishPageQueryDTO);
 
     /**
+     * 菜品批量删除
+     * @param ids
+     */
+    void deleteBatch(List<Long> ids);
+
+    /**
      * 根据分类id查询菜品
      *
      * @param categoryId
@@ -48,5 +54,8 @@ public interface DishService {
      * @return
      */
     List<DishVO> listWithFlavor(Dish dish);
+
+
+
 
 }

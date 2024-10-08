@@ -4,8 +4,10 @@ import com.github.pagehelper.Page;
 import com.sky.annotation.AutoFill;
 import com.sky.dto.DishPageQueryDTO;
 import com.sky.entity.Dish;
+import com.sky.entity.Setmeal;
 import com.sky.enumeration.OperationType;
 import com.sky.vo.DishVO;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,13 @@ public interface DishMapper {
     Integer countByCategoryId(Long categoryId);
 
     /**
+     * 根据主键删除菜品数据
+     * @param id
+     */
+    @Delete("delete from dish where id = #{id}")
+    void deleteById(Long id);
+
+    /**
      * 插入菜品数据
      *
      * @param dish
@@ -39,6 +48,14 @@ public interface DishMapper {
      * @return
      */
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 根据主键查询菜品
+     *
+     * @param id
+     */
+    @Select("select * from dish where id = #{id}")
+    Dish getById(Long id);
 
     /**
      * 动态条件查询菜品
@@ -56,4 +73,13 @@ public interface DishMapper {
      */
     @Select("select a.* from dish a left join setmeal_dish b on a.id = b.dish_id where b.setmeal_id = #{setmealId}")
     List<Dish> getBySetmealId(Long setmealId);
+
+    /**
+     * 根据id修改套餐
+     *
+     * @param dish
+     */
+    @AutoFill(OperationType.UPDATE)
+    void update(Dish dish);
+
 }
