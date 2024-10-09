@@ -27,11 +27,17 @@ public interface DishMapper {
     Integer countByCategoryId(Long categoryId);
 
     /**
-     * 根据主键删除菜品数据
+     * 根据菜品id（批量）删除菜品数据
      * @param id
      */
     @Delete("delete from dish where id = #{id}")
     void deleteById(Long id);
+
+    /**
+     * 根据菜品id集合批量删除菜品数据
+     * @param ids
+     */
+    void deleteByIds(List<Long> ids);
 
     /**
      * 插入菜品数据
@@ -81,5 +87,6 @@ public interface DishMapper {
      */
     @AutoFill(OperationType.UPDATE)
     void update(Dish dish);
+
 
 }
